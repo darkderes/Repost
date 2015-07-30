@@ -43,15 +43,20 @@
             this.ms_turno_inicio = new System.Windows.Forms.MaskedTextBox();
             this.ms_turno_termino = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.lbl_error_2 = new System.Windows.Forms.Label();
+            this.lbl_error_1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lbl_error_4 = new System.Windows.Forms.Label();
+            this.lbl_error_3 = new System.Windows.Forms.Label();
             this.ms_colacion_termino = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.ms_colacion_inicio = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmb_productor = new System.Windows.Forms.ComboBox();
+            this.cmb_especies = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -71,13 +76,14 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btn_especies = new System.Windows.Forms.Button();
+            this.btn_productor = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.maskedTextBox7 = new System.Windows.Forms.MaskedTextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -86,17 +92,14 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btn_motivo = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.lbl_error_1 = new System.Windows.Forms.Label();
-            this.lbl_error_2 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.lbl_error_3 = new System.Windows.Forms.Label();
-            this.lbl_error_4 = new System.Windows.Forms.Label();
+            this.cmb_motivos = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -243,6 +246,37 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Horas de turno";
             // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(71, 114);
+            this.maskedTextBox1.Mask = "00:00";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(36, 20);
+            this.maskedTextBox1.TabIndex = 18;
+            this.maskedTextBox1.Text = "0000";
+            // 
+            // lbl_error_2
+            // 
+            this.lbl_error_2.AutoSize = true;
+            this.lbl_error_2.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error_2.Location = new System.Drawing.Point(114, 85);
+            this.lbl_error_2.Name = "lbl_error_2";
+            this.lbl_error_2.Size = new System.Drawing.Size(34, 13);
+            this.lbl_error_2.TabIndex = 17;
+            this.lbl_error_2.Text = "(error)";
+            this.lbl_error_2.Visible = false;
+            // 
+            // lbl_error_1
+            // 
+            this.lbl_error_1.AutoSize = true;
+            this.lbl_error_1.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error_1.Location = new System.Drawing.Point(114, 46);
+            this.lbl_error_1.Name = "lbl_error_1";
+            this.lbl_error_1.Size = new System.Drawing.Size(34, 13);
+            this.lbl_error_1.TabIndex = 16;
+            this.lbl_error_1.Text = "(error)";
+            this.lbl_error_1.Visible = false;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.lbl_error_4);
@@ -257,6 +291,28 @@
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Horas de colacion";
+            // 
+            // lbl_error_4
+            // 
+            this.lbl_error_4.AutoSize = true;
+            this.lbl_error_4.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error_4.Location = new System.Drawing.Point(114, 84);
+            this.lbl_error_4.Name = "lbl_error_4";
+            this.lbl_error_4.Size = new System.Drawing.Size(34, 13);
+            this.lbl_error_4.TabIndex = 18;
+            this.lbl_error_4.Text = "(error)";
+            this.lbl_error_4.Visible = false;
+            // 
+            // lbl_error_3
+            // 
+            this.lbl_error_3.AutoSize = true;
+            this.lbl_error_3.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error_3.Location = new System.Drawing.Point(114, 46);
+            this.lbl_error_3.Name = "lbl_error_3";
+            this.lbl_error_3.Size = new System.Drawing.Size(34, 13);
+            this.lbl_error_3.TabIndex = 17;
+            this.lbl_error_3.Text = "(error)";
+            this.lbl_error_3.Visible = false;
             // 
             // ms_colacion_termino
             // 
@@ -311,21 +367,23 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "Productor:";
             // 
-            // comboBox1
+            // cmb_productor
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(86, 80);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(169, 21);
-            this.comboBox1.TabIndex = 20;
+            this.cmb_productor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_productor.FormattingEnabled = true;
+            this.cmb_productor.Location = new System.Drawing.Point(86, 80);
+            this.cmb_productor.Name = "cmb_productor";
+            this.cmb_productor.Size = new System.Drawing.Size(169, 21);
+            this.cmb_productor.TabIndex = 20;
             // 
-            // comboBox2
+            // cmb_especies
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(88, 119);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(169, 21);
-            this.comboBox2.TabIndex = 22;
+            this.cmb_especies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_especies.FormattingEnabled = true;
+            this.cmb_especies.Location = new System.Drawing.Point(88, 119);
+            this.cmb_especies.Name = "cmb_especies";
+            this.cmb_especies.Size = new System.Drawing.Size(169, 21);
+            this.cmb_especies.TabIndex = 22;
             // 
             // label11
             // 
@@ -356,7 +414,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(324, 43);
+            this.label13.Location = new System.Drawing.Point(364, 43);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(39, 13);
             this.label13.TabIndex = 26;
@@ -364,7 +422,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(376, 40);
+            this.textBox3.Location = new System.Drawing.Point(416, 40);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 25;
@@ -372,7 +430,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(318, 83);
+            this.label14.Location = new System.Drawing.Point(358, 83);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(48, 13);
             this.label14.TabIndex = 28;
@@ -380,7 +438,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(376, 80);
+            this.textBox4.Location = new System.Drawing.Point(416, 80);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 27;
@@ -388,7 +446,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(273, 122);
+            this.label15.Location = new System.Drawing.Point(313, 122);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(93, 13);
             this.label15.TabIndex = 30;
@@ -396,7 +454,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(376, 119);
+            this.textBox6.Location = new System.Drawing.Point(416, 119);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 29;
@@ -404,7 +462,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(273, 156);
+            this.label16.Location = new System.Drawing.Point(313, 156);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(90, 13);
             this.label16.TabIndex = 32;
@@ -412,7 +470,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(376, 153);
+            this.textBox7.Location = new System.Drawing.Point(416, 153);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 20);
             this.textBox7.TabIndex = 31;
@@ -454,22 +512,22 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(117, 18);
+            this.label19.Location = new System.Drawing.Point(100, 27);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(48, 13);
+            this.label19.Size = new System.Drawing.Size(50, 13);
             this.label19.TabIndex = 38;
-            this.label19.Text = "dotacion";
+            this.label19.Text = "Dotacion";
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(154, 49);
+            this.textBox8.Location = new System.Drawing.Point(126, 49);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 20);
             this.textBox8.TabIndex = 37;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(48, 49);
+            this.textBox9.Location = new System.Drawing.Point(20, 49);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 20);
             this.textBox9.TabIndex = 39;
@@ -477,28 +535,23 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(111, 100);
+            this.label20.Location = new System.Drawing.Point(83, 100);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(67, 13);
             this.label20.TabIndex = 40;
             this.label20.Text = "Horas Extras";
             // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(95, 132);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 41;
-            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btn_especies);
+            this.groupBox4.Controls.Add(this.btn_productor);
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.comboBox1);
+            this.groupBox4.Controls.Add(this.cmb_productor);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.textBox2);
-            this.groupBox4.Controls.Add(this.comboBox2);
+            this.groupBox4.Controls.Add(this.cmb_especies);
             this.groupBox4.Controls.Add(this.maskedTextBox5);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label17);
@@ -520,19 +573,48 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Lo procesado";
             // 
+            // btn_especies
+            // 
+            this.btn_especies.Location = new System.Drawing.Point(263, 118);
+            this.btn_especies.Name = "btn_especies";
+            this.btn_especies.Size = new System.Drawing.Size(25, 23);
+            this.btn_especies.TabIndex = 56;
+            this.btn_especies.Text = "+";
+            this.btn_especies.UseVisualStyleBackColor = true;
+            this.btn_especies.Click += new System.EventHandler(this.btn_especies_Click);
+            // 
+            // btn_productor
+            // 
+            this.btn_productor.Location = new System.Drawing.Point(261, 78);
+            this.btn_productor.Name = "btn_productor";
+            this.btn_productor.Size = new System.Drawing.Size(25, 23);
+            this.btn_productor.TabIndex = 55;
+            this.btn_productor.Text = "+";
+            this.btn_productor.UseVisualStyleBackColor = true;
+            this.btn_productor.Click += new System.EventHandler(this.btn_productor_Click);
+            // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBox10);
+            this.groupBox5.Controls.Add(this.maskedTextBox2);
             this.groupBox5.Controls.Add(this.textBox8);
             this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.Controls.Add(this.textBox9);
-            this.groupBox5.Location = new System.Drawing.Point(506, 39);
+            this.groupBox5.Location = new System.Drawing.Point(533, 39);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(301, 183);
+            this.groupBox5.Size = new System.Drawing.Size(240, 156);
             this.groupBox5.TabIndex = 37;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Horas Extras";
+            // 
+            // maskedTextBox2
+            // 
+            this.maskedTextBox2.Location = new System.Drawing.Point(103, 117);
+            this.maskedTextBox2.Mask = "00:00";
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(36, 20);
+            this.maskedTextBox2.TabIndex = 41;
+            this.maskedTextBox2.Text = "0000";
             // 
             // dataGridView1
             // 
@@ -557,13 +639,6 @@
             this.label21.Size = new System.Drawing.Size(44, 13);
             this.label21.TabIndex = 45;
             this.label21.Text = "Origen :";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(118, 63);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(263, 20);
-            this.textBox12.TabIndex = 46;
             // 
             // label22
             // 
@@ -627,13 +702,14 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.cmb_motivos);
+            this.groupBox6.Controls.Add(this.btn_motivo);
             this.groupBox6.Controls.Add(this.textBox11);
             this.groupBox6.Controls.Add(this.maskedTextBox7);
             this.groupBox6.Controls.Add(this.label25);
             this.groupBox6.Controls.Add(this.label21);
             this.groupBox6.Controls.Add(this.richTextBox1);
             this.groupBox6.Controls.Add(this.label22);
-            this.groupBox6.Controls.Add(this.textBox12);
             this.groupBox6.Controls.Add(this.label23);
             this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.maskedTextBox8);
@@ -643,6 +719,16 @@
             this.groupBox6.TabIndex = 54;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Tiempos Inactivos";
+            // 
+            // btn_motivo
+            // 
+            this.btn_motivo.Location = new System.Drawing.Point(387, 61);
+            this.btn_motivo.Name = "btn_motivo";
+            this.btn_motivo.Size = new System.Drawing.Size(25, 23);
+            this.btn_motivo.TabIndex = 54;
+            this.btn_motivo.Text = "+";
+            this.btn_motivo.UseVisualStyleBackColor = true;
+            this.btn_motivo.Click += new System.EventHandler(this.btn_motivo_Click);
             // 
             // dataGridView2
             // 
@@ -705,57 +791,14 @@
             this.linkLabel1.Text = "logout";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // lbl_error_1
+            // cmb_motivos
             // 
-            this.lbl_error_1.AutoSize = true;
-            this.lbl_error_1.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_1.Location = new System.Drawing.Point(114, 46);
-            this.lbl_error_1.Name = "lbl_error_1";
-            this.lbl_error_1.Size = new System.Drawing.Size(34, 13);
-            this.lbl_error_1.TabIndex = 16;
-            this.lbl_error_1.Text = "(error)";
-            this.lbl_error_1.Visible = false;
-            // 
-            // lbl_error_2
-            // 
-            this.lbl_error_2.AutoSize = true;
-            this.lbl_error_2.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_2.Location = new System.Drawing.Point(114, 85);
-            this.lbl_error_2.Name = "lbl_error_2";
-            this.lbl_error_2.Size = new System.Drawing.Size(34, 13);
-            this.lbl_error_2.TabIndex = 17;
-            this.lbl_error_2.Text = "(error)";
-            this.lbl_error_2.Visible = false;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(71, 114);
-            this.maskedTextBox1.Mask = "00:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(36, 20);
-            this.maskedTextBox1.TabIndex = 18;
-            // 
-            // lbl_error_3
-            // 
-            this.lbl_error_3.AutoSize = true;
-            this.lbl_error_3.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_3.Location = new System.Drawing.Point(114, 46);
-            this.lbl_error_3.Name = "lbl_error_3";
-            this.lbl_error_3.Size = new System.Drawing.Size(34, 13);
-            this.lbl_error_3.TabIndex = 17;
-            this.lbl_error_3.Text = "(error)";
-            this.lbl_error_3.Visible = false;
-            // 
-            // lbl_error_4
-            // 
-            this.lbl_error_4.AutoSize = true;
-            this.lbl_error_4.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_4.Location = new System.Drawing.Point(114, 84);
-            this.lbl_error_4.Name = "lbl_error_4";
-            this.lbl_error_4.Size = new System.Drawing.Size(34, 13);
-            this.lbl_error_4.TabIndex = 18;
-            this.lbl_error_4.Text = "(error)";
-            this.lbl_error_4.Visible = false;
+            this.cmb_motivos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_motivos.FormattingEnabled = true;
+            this.cmb_motivos.Location = new System.Drawing.Point(118, 63);
+            this.cmb_motivos.Name = "cmb_motivos";
+            this.cmb_motivos.Size = new System.Drawing.Size(263, 21);
+            this.cmb_motivos.TabIndex = 55;
             // 
             // Form_Principal
             // 
@@ -825,8 +868,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmb_productor;
+        private System.Windows.Forms.ComboBox cmb_especies;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label12;
@@ -846,13 +889,11 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.MaskedTextBox maskedTextBox7;
         private System.Windows.Forms.Label label23;
@@ -872,6 +913,11 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Label lbl_error_3;
         private System.Windows.Forms.Label lbl_error_4;
+        private System.Windows.Forms.Button btn_motivo;
+        private System.Windows.Forms.Button btn_productor;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.Button btn_especies;
+        private System.Windows.Forms.ComboBox cmb_motivos;
     }
 }
 
