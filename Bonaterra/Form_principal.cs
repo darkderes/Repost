@@ -21,13 +21,11 @@ namespace Bonaterra
             InitializeComponent();
         }
 
-        private void label26_Click(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void Form_Principal_Load(object sender, EventArgs e)
         {
+
+            cmb_variedad.Enabled = false;
             try
             {
                 motivos_carga();
@@ -109,7 +107,6 @@ namespace Bonaterra
 
         private void btn_productor_Click(object sender, EventArgs e)
         {
-            
             m.Lbl_titulo.Text = "Productor";
             m.ShowDialog();
             productor_carga();
@@ -166,6 +163,42 @@ namespace Bonaterra
             cmb_productor.ValueMember = "productor_id";
             cmb_productor.SelectedIndex = 0;
             cn.cerrarConexion();
+        }
+        private void variedad_carga()
+        {
+            cn.crearConeccion();
+            MySqlCommand command = new MySqlCommand("variedad_seleccionar", cn.getConexion());
+            MySqlDataAdapter myAdapter = new MySqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("especie",cmb_especies.SelectedValue.ToString());
+            DataSet myds = new DataSet();
+            myAdapter.Fill(myds, "variedad");
+            cmb_variedad.Refresh();
+            cmb_variedad.DataSource = myds.Tables["variedad"].DefaultView;
+            cmb_variedad.DisplayMember = "variedad_variedad";
+            cmb_variedad.ValueMember = "variedad_id";
+            cmb_variedad.SelectedIndex = 0;
+            cn.cerrarConexion();
+
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form_variedad v = new Form_variedad();
+            v.ShowDialog();
+        }
+
+        private void cmb_especies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmb_especies.SelectedIndex != 0)
+            {
+                variedad_carga();
+                cmb_variedad.Enabled = true;
+            }
+            else
+            {
+                cmb_variedad.Enabled = false;
+            }
         }
     }
 }

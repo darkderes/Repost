@@ -58,7 +58,7 @@
             this.cmb_productor = new System.Windows.Forms.ComboBox();
             this.cmb_especies = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cmb_variedad = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -92,14 +92,15 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cmb_motivos = new System.Windows.Forms.ComboBox();
             this.btn_motivo = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.cmb_motivos = new System.Windows.Forms.ComboBox();
+            this.lvl_logout = new System.Windows.Forms.LinkLabel();
+            this.btn_variedad = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -384,6 +385,7 @@
             this.cmb_especies.Name = "cmb_especies";
             this.cmb_especies.Size = new System.Drawing.Size(169, 21);
             this.cmb_especies.TabIndex = 22;
+            this.cmb_especies.SelectedIndexChanged += new System.EventHandler(this.cmb_especies_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -394,13 +396,14 @@
             this.label11.TabIndex = 21;
             this.label11.Text = "Especie :";
             // 
-            // comboBox3
+            // cmb_variedad
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(86, 153);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(169, 21);
-            this.comboBox3.TabIndex = 24;
+            this.cmb_variedad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_variedad.FormattingEnabled = true;
+            this.cmb_variedad.Location = new System.Drawing.Point(86, 153);
+            this.cmb_variedad.Name = "cmb_variedad";
+            this.cmb_variedad.Size = new System.Drawing.Size(169, 21);
+            this.cmb_variedad.TabIndex = 24;
             // 
             // label12
             // 
@@ -543,6 +546,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btn_variedad);
             this.groupBox4.Controls.Add(this.btn_especies);
             this.groupBox4.Controls.Add(this.btn_productor);
             this.groupBox4.Controls.Add(this.groupBox5);
@@ -557,7 +561,7 @@
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.ms);
-            this.groupBox4.Controls.Add(this.comboBox3);
+            this.groupBox4.Controls.Add(this.cmb_variedad);
             this.groupBox4.Controls.Add(this.label18);
             this.groupBox4.Controls.Add(this.textBox3);
             this.groupBox4.Controls.Add(this.label13);
@@ -585,7 +589,7 @@
             // 
             // btn_productor
             // 
-            this.btn_productor.Location = new System.Drawing.Point(261, 78);
+            this.btn_productor.Location = new System.Drawing.Point(263, 78);
             this.btn_productor.Name = "btn_productor";
             this.btn_productor.Size = new System.Drawing.Size(25, 23);
             this.btn_productor.TabIndex = 55;
@@ -720,6 +724,15 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Tiempos Inactivos";
             // 
+            // cmb_motivos
+            // 
+            this.cmb_motivos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_motivos.FormattingEnabled = true;
+            this.cmb_motivos.Location = new System.Drawing.Point(118, 63);
+            this.cmb_motivos.Name = "cmb_motivos";
+            this.cmb_motivos.Size = new System.Drawing.Size(263, 21);
+            this.cmb_motivos.TabIndex = 55;
+            // 
             // btn_motivo
             // 
             this.btn_motivo.Location = new System.Drawing.Point(387, 61);
@@ -768,7 +781,6 @@
             this.label26.Size = new System.Drawing.Size(102, 16);
             this.label26.TabIndex = 58;
             this.label26.Text = "Felipe Infante";
-            this.label26.Click += new System.EventHandler(this.label26_Click);
             // 
             // label27
             // 
@@ -780,25 +792,26 @@
             this.label27.TabIndex = 59;
             this.label27.Text = "Usuario :";
             // 
-            // linkLabel1
+            // lvl_logout
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(1371, 151);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(36, 13);
-            this.linkLabel1.TabIndex = 60;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "logout";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.lvl_logout.AutoSize = true;
+            this.lvl_logout.Location = new System.Drawing.Point(1371, 151);
+            this.lvl_logout.Name = "lvl_logout";
+            this.lvl_logout.Size = new System.Drawing.Size(36, 13);
+            this.lvl_logout.TabIndex = 60;
+            this.lvl_logout.TabStop = true;
+            this.lvl_logout.Text = "logout";
+            this.lvl_logout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // cmb_motivos
+            // btn_variedad
             // 
-            this.cmb_motivos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_motivos.FormattingEnabled = true;
-            this.cmb_motivos.Location = new System.Drawing.Point(118, 63);
-            this.cmb_motivos.Name = "cmb_motivos";
-            this.cmb_motivos.Size = new System.Drawing.Size(263, 21);
-            this.cmb_motivos.TabIndex = 55;
+            this.btn_variedad.Location = new System.Drawing.Point(263, 151);
+            this.btn_variedad.Name = "btn_variedad";
+            this.btn_variedad.Size = new System.Drawing.Size(25, 23);
+            this.btn_variedad.TabIndex = 57;
+            this.btn_variedad.Text = "+";
+            this.btn_variedad.UseVisualStyleBackColor = true;
+            this.btn_variedad.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form_Principal
             // 
@@ -806,7 +819,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1596, 736);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.lvl_logout);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.pictureBox2);
@@ -871,7 +884,7 @@
         private System.Windows.Forms.ComboBox cmb_productor;
         private System.Windows.Forms.ComboBox cmb_especies;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmb_variedad;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox3;
@@ -907,7 +920,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel lvl_logout;
         private System.Windows.Forms.Label lbl_error_1;
         private System.Windows.Forms.Label lbl_error_2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
@@ -918,6 +931,7 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.Button btn_especies;
         private System.Windows.Forms.ComboBox cmb_motivos;
+        private System.Windows.Forms.Button btn_variedad;
     }
 }
 
