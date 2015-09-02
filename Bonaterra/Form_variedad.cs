@@ -41,13 +41,13 @@ namespace Bonaterra
 
         public void ingresar_variedad()
         {
-            if (txt_cuadro.Text == "")
+         /*   if ((txt_cuadro.Text == "")||(cmb_especies.SelectedIndex != 0))
             {
                 MessageBox.Show("El cuadro de texto no puede ser vacio", "Bonaterra", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_cuadro.Focus();
             }
             else
-            {
+            {*/
                 try
                 {
                     cn.crearConeccion();
@@ -64,7 +64,7 @@ namespace Bonaterra
                     this.Close();
                 }
                 catch { MessageBox.Show("Error con base de datos", "Bonaterra", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-            }
+         //   }
 
 
         }

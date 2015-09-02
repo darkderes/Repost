@@ -16,7 +16,7 @@ namespace Bonaterra
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Principal());
+            Application.Run(new FormLogin());
         }
     }
 }

@@ -26,11 +26,12 @@ namespace Bonaterra
         {
 
             cmb_variedad.Enabled = false;
+            radioButton1.Checked = true;
+            radioButton3.Checked = true;
             try
             {
-                motivos_carga();
-                especies_carga();
-                productor_carga();            }
+                especies_carga();        
+            }
             catch
             { }
         }
@@ -59,42 +60,46 @@ namespace Bonaterra
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (esvalida_la_hora(ms_turno_inicio.Text) == true)
-            {
-                lbl_error_1.Visible = false;
-            }
-            else
-            {
-                lbl_error_1.Visible = true;
-                     
-            }
-            if (esvalida_la_hora(ms_turno_termino.Text) == true)
-            {
-                lbl_error_2.Visible = false;
-            }
-            else
-            {
-                lbl_error_2.Visible = true;
+            this.Hide();
+            FormLogin s = new FormLogin();
+            s.ShowDialog();
 
-            }
-            if (esvalida_la_hora(ms_colacion_inicio.Text) == true)
-            {
-                lbl_error_3.Visible = false;
-            }
-            else
-            {
-                lbl_error_3.Visible = true;
+            /*   if (esvalida_la_hora(ms_turno_inicio.Text) == true)
+               {
+                   lbl_error_1.Visible = false;
+               }
+               else
+               {
+                   lbl_error_1.Visible = true;
 
-            }
-            if (esvalida_la_hora(ms_colacion_termino.Text) == true)
-            {
-                lbl_error_4.Visible = false;
-            }
-            else
-            {
-                lbl_error_4.Visible = true;
+               }
+               if (esvalida_la_hora(ms_turno_termino.Text) == true)
+               {
+                   lbl_error_2.Visible = false;
+               }
+               else
+               {
+                   lbl_error_2.Visible = true;
 
-            }
+               }
+               if (esvalida_la_hora(ms_colacion_inicio.Text) == true)
+               {
+                   lbl_error_3.Visible = false;
+               }
+               else
+               {
+                   lbl_error_3.Visible = true;
+
+               }
+               if (esvalida_la_hora(ms_colacion_termino.Text) == true)
+               {
+                   lbl_error_4.Visible = false;
+               }
+               else
+               {
+                   lbl_error_4.Visible = true;
+
+               }*/
         }
 
         private void btn_motivo_Click(object sender, EventArgs e)
@@ -102,15 +107,10 @@ namespace Bonaterra
             m = new FormMotivos();
             m.Lbl_titulo.Text = "Motivos";
             m.ShowDialog();
-            motivos_carga();
+            //motivos_carga();
         }
 
-        private void btn_productor_Click(object sender, EventArgs e)
-        {
-            m.Lbl_titulo.Text = "Productor";
-            m.ShowDialog();
-            productor_carga();
-        }
+   
 
         private void btn_especies_Click(object sender, EventArgs e)
         {
@@ -119,7 +119,7 @@ namespace Bonaterra
             especies_carga();
         }
 
-        private void motivos_carga()
+   /*     private void motivos_carga()
         {      
             cn.crearConeccion();
             MySqlCommand command = new MySqlCommand("motivos_seleccionar", cn.getConexion());
@@ -133,7 +133,7 @@ namespace Bonaterra
             cmb_motivos.ValueMember = "motivo_Id";
             cmb_motivos.SelectedIndex = 0;
             cn.cerrarConexion();
-        }
+        }*/
         private void especies_carga()
         {
             cn.crearConeccion();
@@ -149,7 +149,7 @@ namespace Bonaterra
             cmb_especies.SelectedIndex = 0;
             cn.cerrarConexion();
         }
-        private void productor_carga()
+     /*   private void productor_carga()
         {
             cn.crearConeccion();
             MySqlCommand command = new MySqlCommand("productor_seleccionar", cn.getConexion());
@@ -163,7 +163,7 @@ namespace Bonaterra
             cmb_productor.ValueMember = "productor_id";
             cmb_productor.SelectedIndex = 0;
             cn.cerrarConexion();
-        }
+        }*/
         private void variedad_carga()
         {
             cn.crearConeccion();
@@ -186,6 +186,7 @@ namespace Bonaterra
         {
             Form_variedad v = new Form_variedad();
             v.ShowDialog();
+            variedad_carga();
         }
 
         private void cmb_especies_SelectedIndexChanged(object sender, EventArgs e)
@@ -200,5 +201,73 @@ namespace Bonaterra
                 cmb_variedad.Enabled = false;
             }
         }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            DataGridViewRow filaNueva = new DataGridViewRow();
+            DataGridViewCell celProductor = new DataGridViewTextBoxCell();
+            DataGridViewCell celEspecie = new DataGridViewTextBoxCell();
+            DataGridViewCell celEspecieId = new DataGridViewTextBoxCell();
+            DataGridViewCell celVariedad = new DataGridViewTextBoxCell();
+            DataGridViewCell celVariedadId = new DataGridViewTextBoxCell();
+            DataGridViewCell celInicio = new DataGridViewTextBoxCell();
+            DataGridViewCell celTermino = new DataGridViewTextBoxCell();
+            DataGridViewCell celLote = new DataGridViewTextBoxCell();
+            DataGridViewCell celBins = new DataGridViewTextBoxCell();
+
+            celProductor.Value = txt_productor.Text;
+            celEspecie.Value = cmb_especies.Text;
+            celEspecieId.Value = cmb_especies.SelectedValue;
+            celVariedad.Value = cmb_variedad.Text;
+            celVariedadId.Value = cmb_variedad.SelectedValue;
+            celInicio.Value = ms_inicio.Text;
+            celTermino.Value = ms_termino.Text;
+            celLote.Value = txt_lote.Text;
+            celBins.Value = txt_bins.Text;
+            filaNueva.Cells.Add(celProductor);
+            filaNueva.Cells.Add(celEspecie);
+            filaNueva.Cells.Add(celEspecieId);
+            filaNueva.Cells.Add(celVariedad);
+            filaNueva.Cells.Add(celVariedadId);
+            filaNueva.Cells.Add(celInicio);
+            filaNueva.Cells.Add(celTermino);
+            filaNueva.Cells.Add(celLote);
+            filaNueva.Cells.Add(celBins);
+            dataGridView1.Rows.Add(filaNueva);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("boton 3 presionado");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow filaNueva = new DataGridViewRow();
+            DataGridViewCell celLote = new DataGridViewTextBoxCell();
+            DataGridViewCell celMotivo = new DataGridViewTextBoxCell();
+            DataGridViewCell celInicio = new DataGridViewTextBoxCell();
+            DataGridViewCell celTermino = new DataGridViewTextBoxCell();
+            DataGridViewCell celObjetivo = new DataGridViewTextBoxCell();
+
+            celLote.Value = txt_lote2.Text;
+            celMotivo.Value = txt_motivo.Text;
+            celInicio.Value = mk_inactivo_inicio.Text;
+            celTermino.Value = mk_inactivo_termino.Text;
+            celObjetivo.Value = rc_observacion.Text;
+            filaNueva.Cells.Add(celLote);
+            filaNueva.Cells.Add(celMotivo);
+            filaNueva.Cells.Add(celInicio);
+            filaNueva.Cells.Add(celTermino);
+            filaNueva.Cells.Add(celObjetivo);
+            dataGridView2.Rows.Add(filaNueva);
+
+        }
     }
+  
 }
