@@ -16,6 +16,8 @@ namespace Bonaterra
     {
         FormMotivos m = new FormMotivos();
         coneccion cn = new coneccion();
+        public string rut = " ";
+        int NumeroValor = 0;
         public Form_Principal()
         {
             InitializeComponent();
@@ -28,12 +30,15 @@ namespace Bonaterra
             cmb_variedad.Enabled = false;
             radioButton1.Checked = true;
             radioButton3.Checked = true;
+           
             try
             {
                 especies_carga();        
             }
             catch
             { }
+            extraerUltimo();
+          
         }
         public bool esvalida_la_hora(string thetime)
         {
@@ -57,7 +62,26 @@ namespace Bonaterra
             }
             return false;
         }
+        public int extraerNumeroPedido()
+        {
+            cn.crearConeccion();
+            MySqlCommand command = new MySqlCommand("contadorInforme", cn.getConexion());
+            MySqlDataAdapter myAdapter = new MySqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            DataSet myds = new DataSet();
+            myAdapter.Fill(myds, "informe");
+            using (MySqlDataReader rsd = command.ExecuteReader())
+            {
+                while (rsd.Read())
+                {
+                    NumeroValor = Convert.ToInt16(rsd[0].ToString());
+                }
 
+            }
+            return NumeroValor;
+            cn.cerrarConexion();
+
+        }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
@@ -246,6 +270,36 @@ namespace Bonaterra
             MessageBox.Show("boton 3 presionado");
         }
 
+        public void extraerUltimo()
+        {
+            extraerNumeroPedido();
+            if (NumeroValor == 0)
+            {
+                NumeroValor = 10000;
+                lbl_numero.Text = "Nº "+NumeroValor ;
+            }
+            else
+            {
+                int codigo = 0;
+                cn.crearConeccion();
+                MySqlCommand command = new MySqlCommand("ultimoinforme", cn.getConexion());
+                MySqlDataAdapter myAdapter = new MySqlDataAdapter(command);
+                command.CommandType = CommandType.StoredProcedure;
+                DataSet myds = new DataSet();
+                myAdapter.Fill(myds, "informe");
+                using (MySqlDataReader rsd = command.ExecuteReader())
+                {
+                    while (rsd.Read())
+                    {
+                        codigo = Convert.ToInt32(rsd[0].ToString());
+                    }
+                    lbl_numero.Text = Convert.ToString(codigo + 1);
+                }
+            }
+            cn.cerrarConexion();
+        }
+        
+
         private void button2_Click(object sender, EventArgs e)
         {
             DataGridViewRow filaNueva = new DataGridViewRow();
@@ -268,6 +322,54 @@ namespace Bonaterra
             dataGridView2.Rows.Add(filaNueva);
 
         }
+        public void ingreso_informe()
+        {
+        string linea = "";
+        string turno = "";
+        cn.crearConeccion();
+        MySqlCommand command = new MySqlCommand("insertar_informe", cn.getConexion());
+        command.CommandType = CommandType.StoredProcedure;
+        command.Parameters.AddWithValue("id", NumeroValor);
+        command.Parameters.AddWithValue("fecha", dt_fecha.Text);
+            if(radioButton1.Checked == true)
+            {
+                linea = "MAF";
+            }
+            else
+            if(radioButton2.Checked == true)
+            {
+                linea = "UNITEC";
+            }
+
+            if (radioButton3.Checked == true)
+            {
+                turno = "Vespertino";
+            }
+            else
+            if(radioButton4.Checked == true)
+            {
+                turno = "Diurno";
+            }
+        command.Parameters.AddWithValue("linea",linea);
+        command.Parameters.AddWithValue("turno",turno);
+        command.Parameters.AddWithValue("inicio",ms_turno_inicio.Text);
+        command.Parameters.AddWithValue("termino",ms_turno_termino.Text);
+        command.Parameters.AddWithValue("extras",ms_extras.Text);
+        command.Parameters.AddWithValue("colacionInicio",ms_colacion_inicio.Text);
+        command.Parameters.AddWithValue("colacionTermino",ms_colacion_termino.Text);
+        command.Parameters.AddWithValue("rut", rut);
+        command.ExecuteNonQuery();
+        cn.cerrarConexion();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            try
+            {ingreso_informe(); }
+            catch { MessageBox.Show("error"); }
+            
+        }
     }
-  
+   
+
 }

@@ -105,7 +105,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txt_pass);
             this.Controls.Add(this.txt_usuario);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormLogin";

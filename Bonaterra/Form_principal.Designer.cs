@@ -45,7 +45,7 @@
             this.ms_turno_inicio = new System.Windows.Forms.MaskedTextBox();
             this.ms_turno_termino = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.ms_extras = new System.Windows.Forms.MaskedTextBox();
             this.lbl_error_2 = new System.Windows.Forms.Label();
             this.lbl_error_1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -107,6 +107,7 @@
             this.txt_motivo = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -274,7 +275,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.maskedTextBox1);
+            this.groupBox2.Controls.Add(this.ms_extras);
             this.groupBox2.Controls.Add(this.lbl_error_2);
             this.groupBox2.Controls.Add(this.ms_turno_termino);
             this.groupBox2.Controls.Add(this.lbl_error_1);
@@ -289,14 +290,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Horas de turno";
             // 
-            // maskedTextBox1
+            // ms_extras
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(71, 100);
-            this.maskedTextBox1.Mask = "00:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(36, 20);
-            this.maskedTextBox1.TabIndex = 18;
-            this.maskedTextBox1.Text = "0000";
+            this.ms_extras.Location = new System.Drawing.Point(71, 100);
+            this.ms_extras.Mask = "00:00";
+            this.ms_extras.Name = "ms_extras";
+            this.ms_extras.Size = new System.Drawing.Size(36, 20);
+            this.ms_extras.TabIndex = 18;
+            this.ms_extras.Text = "0000";
             // 
             // lbl_error_2
             // 
@@ -852,11 +853,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(584, 646);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(225, 61);
+            this.button3.TabIndex = 61;
+            this.button3.Text = "Ingreso";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // Form_Principal
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1282, 682);
+            this.ClientSize = new System.Drawing.Size(1282, 777);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.lvl_logout);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.txt_user);
@@ -932,7 +944,7 @@
         private System.Windows.Forms.LinkLabel lvl_logout;
         private System.Windows.Forms.Label lbl_error_1;
         private System.Windows.Forms.Label lbl_error_2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox ms_extras;
         private System.Windows.Forms.Label lbl_error_3;
         private System.Windows.Forms.Label lbl_error_4;
         private System.Windows.Forms.Button btn_especies;
@@ -976,6 +988,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn observaciones;
         public System.Windows.Forms.Label txt_user;
         public System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

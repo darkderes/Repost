@@ -52,15 +52,13 @@ namespace Bonaterra
 
         public Boolean buscar()
         {
-            cn.crearConeccion();
-          
+            cn.crearConeccion();  
             MySqlCommand command = new MySqlCommand("login", cn.getConexion());
             MySqlDataAdapter myAdapter = new MySqlDataAdapter(command);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("rut1", txt_usuario.Text);
             command.Parameters.AddWithValue("pass1",txt_pass.Text);
-          
-           
+                  
             using (MySqlDataReader rsd = command.ExecuteReader())
             {
                 while (rsd.Read())
@@ -89,6 +87,7 @@ namespace Bonaterra
                 Form_Principal s = new Form_Principal();
                 s.txt_user.Text = nombre;
                 s.pictureBox2.Image = foto;
+                s.rut = txt_usuario.Text;
                 s.ShowDialog();
             }
             else
