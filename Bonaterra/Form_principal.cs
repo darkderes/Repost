@@ -263,24 +263,59 @@ namespace Bonaterra
             filaNueva.Cells.Add(celLote);
             filaNueva.Cells.Add(celBins);
             dataGridView1.Rows.Add(filaNueva);
+
+           // ingresar_procesado(txt_lote.Text,txt_productor.Text,ms_inicio.Text,ms_termino.Text,Convert.ToInt16(txt_bins.Text),Convert.ToInt16(lbl_numero.Text),Convert.ToInt16 (cmb_especies.SelectedValue.ToString()),Convert.ToInt16(cmb_variedad.SelectedValue.ToString()));
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             MessageBox.Show("boton 3 presionado");
         }
+        public void ingresar_procesado(string lote,string productor,string proceso_inicio,string proceso_termino,int bins,int informe_id,int especies,int variedad)
+        {
+            cn.crearConeccion();
+            MySqlCommand command = new MySqlCommand("insertar_procesado", cn.getConexion());
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("lote",lote);
+            command.Parameters.AddWithValue("productor",productor);
+            command.Parameters.AddWithValue("proceso_inicio",proceso_inicio);
+            command.Parameters.AddWithValue("proceso_termino",proceso_termino);
+            command.Parameters.AddWithValue("bins",bins);
+            command.Parameters.AddWithValue("informe_id",informe_id);
+            command.Parameters.AddWithValue("especies",especies);
+            command.Parameters.AddWithValue("variedad",variedad);
+            command.ExecuteNonQuery();
+            cn.cerrarConexion();
+        }
 
+        public void ingresar_inactivo(string lote, string motivo, string proceso_inicio, string proceso_termino,string observaciones, int informe_id)
+        {
+            cn.crearConeccion();
+            MySqlCommand command = new MySqlCommand("insertar_inactivo", cn.getConexion());
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("lote", lote);
+            command.Parameters.AddWithValue("motivo", motivo);
+            command.Parameters.AddWithValue("inicio", proceso_inicio);
+            command.Parameters.AddWithValue("termino", proceso_termino);
+            command.Parameters.AddWithValue("observaciones",observaciones);
+            command.Parameters.AddWithValue("informe", informe_id);
+            command.ExecuteNonQuery();
+            cn.cerrarConexion();
+
+
+        }
         public void extraerUltimo()
         {
+            int codigo = 0;
             extraerNumeroPedido();
             if (NumeroValor == 0)
             {
                 NumeroValor = 10000;
-                lbl_numero.Text = "Nº "+NumeroValor ;
+                lbl_numero.Text = NumeroValor.ToString() ;
             }
             else
             {
-                int codigo = 0;
+              
                 cn.crearConeccion();
                 MySqlCommand command = new MySqlCommand("ultimoinforme", cn.getConexion());
                 MySqlDataAdapter myAdapter = new MySqlDataAdapter(command);
@@ -329,7 +364,7 @@ namespace Bonaterra
         cn.crearConeccion();
         MySqlCommand command = new MySqlCommand("insertar_informe", cn.getConexion());
         command.CommandType = CommandType.StoredProcedure;
-        command.Parameters.AddWithValue("id", NumeroValor);
+        command.Parameters.AddWithValue("id",Convert.ToInt16(lbl_numero.Text));
         command.Parameters.AddWithValue("fecha", dt_fecha.Text);
             if(radioButton1.Checked == true)
             {
@@ -365,9 +400,26 @@ namespace Bonaterra
         private void button3_Click_1(object sender, EventArgs e)
         {
             try
-            {ingreso_informe(); }
-            catch { MessageBox.Show("error"); }
-            
+            {
+                ingreso_informe();
+
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    ingresar_procesado(dataGridView1.Rows[i].Cells[7].Value.ToString(), dataGridView1.Rows[i].Cells[0].Value.ToString(), dataGridView1.Rows[i].Cells[5].Value.ToString(), dataGridView1.Rows[i].Cells[6].Value.ToString(), Convert.ToInt16(dataGridView1.Rows[i].Cells[8].Value.ToString()),Convert.ToInt16(lbl_numero.Text), Convert.ToInt16(dataGridView1.Rows[i].Cells[2].Value.ToString()), Convert.ToInt16(dataGridView1.Rows[i].Cells[4].Value.ToString()));
+
+                }
+
+                for (int x = 0; x < dataGridView2.RowCount; x++)
+                {
+                    ingresar_inactivo(dataGridView2.Rows[x].Cells[0].Value.ToString(), dataGridView2.Rows[x].Cells[1].Value.ToString(), dataGridView2.Rows[x].Cells[2].Value.ToString(), dataGridView2.Rows[x].Cells[3].Value.ToString(), dataGridView2.Rows[x].Cells[4].Value.ToString(),Convert.ToInt16(lbl_numero.Text));
+                }
+
+            }
+            catch { MessageBox.Show("error al ingresar informacion", "Bonaterra", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            finally { extraerUltimo();
+                MessageBox.Show("Datos ingresados correctamente", "Bonaterra", MessageBoxButtons.OK, MessageBoxIcon.Information);
+}
         }
     }
    

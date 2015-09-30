@@ -89,6 +89,8 @@ namespace Bonaterra
                 s.pictureBox2.Image = foto;
                 s.rut = txt_usuario.Text;
                 s.ShowDialog();
+
+            
             }
             else
             {
